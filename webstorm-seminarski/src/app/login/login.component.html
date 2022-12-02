@@ -1,0 +1,23 @@
+<form [formGroup]="profileForm" autocomplete="off">
+
+  <mat-form-field hideRequiredMarker="true" class="example-full-width" appearance="fill">
+    <mat-label>Email</mat-label>
+    <input formControlName="email" matInput [(ngModel)]="loginKorisnik.email">
+    <mat-hint style="color: red" *ngIf="profileForm.get('email').touched && profileForm.get('email').errors?.['required']">Ovo polje je obavezno</mat-hint>
+    <mat-hint style="color: red" *ngIf="profileForm.get('email').errors?.['minlength']">Ovo polje mora imati minimalno 5 karaktera</mat-hint>
+  </mat-form-field>
+  <mat-form-field hideRequiredMarker="true" class="example-full-width" appearance="fill">
+    <mat-label>Lozinka</mat-label>
+    <input formControlName="lozinka" matInput [(ngModel)]="loginKorisnik.lozinka">
+    <mat-hint style="color: red" *ngIf="profileForm.get('lozinka').touched && profileForm.get('lozinka').errors?.['required']">Ovo polje je obavezno</mat-hint>
+    <mat-hint style="color: red" *ngIf="profileForm.get('lozinka').errors?.['minlength']">Ovo polje mora imati minimalno 5 karaktera</mat-hint>
+  </mat-form-field>
+
+  <button mat-raised-button style="background-color: #3d3d3d;color: white" (click)="Login(loginKorisnik)">Dodaj</button>
+
+  <a href="/registracija" class="site-header__icon site-header__account">
+    <p>Kreiraj racun</p>
+  </a>
+
+</form>
+
