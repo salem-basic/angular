@@ -4,6 +4,7 @@ import {ApiService} from "./api.service";
 import {Subject} from "rxjs";
 
 export interface Korisnik extends LoginKorisnik{
+  id:string,
   ime:string,
   prezime:string,
   datumRodjenja: Date,

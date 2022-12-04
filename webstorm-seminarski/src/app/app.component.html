@@ -1,26 +1,14 @@
-
-<div class="pocetna">
-  <img src="https://img.rasset.ie/00139b7c-800.jpg" alt="" class="slika_pocetni">
-  <div class="center">
-    <h1>Login</h1>
-    <form method="post">
-      <div class="txt_field">
-        <input type="text" required>
-        <span></span>
-        <label>Username</label>
-      </div>
-      <div class="txt_field">
-        <input type="password" required>
-        <span></span>
-        <label>Password</label>
-      </div>
-      <div class="pass">Forgot Password?</div>
-      <input type="submit" value="Login">
-      <div class="signup_link">
-        Not a member? <a href="#">Signup</a>
-      </div>
-    </form>
-  </div>
+<div class="naslovna">
+  <div class="logo"><img class="slika" src="https://upload.wikimedia.org/wikipedia/en/thumb/3/37/Jumpman_logo.svg/300px-Jumpman_logo.svg.png"></div>
+  <nav class="navigacija">
+    <ul>
+      <li routerLink="/pocetna" routerLinkActive="active">POCETNA</li>
+      <li routerLink="/login" routerLinkActive="active">LOGIN</li>
+      <li routerLink="/proizvodi-pregled" routerLinkActive="active">PROIZVODI</li>
+      <li routerLink="/admin" routerLinkActive="active">Admin</li>
+    </ul>
+  </nav>
 </div>
 
+<router-outlet></router-outlet>
 
