@@ -29,4 +29,9 @@ export class ApiService<T> {
   {
     return this.httpKlijent.post(`${this._url}${this._endpoint}/${id}`, null);
   }
+
+  DeleteString(id:string)
+  {
+    return this.httpKlijent.post(`${this._url}${this._endpoint}/${id}`, null);
+  }
 }

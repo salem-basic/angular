@@ -26,6 +26,16 @@ import {MatCardModule} from "@angular/material/card";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import { AdminComponent } from './admin/admin.component';
 import { RouterPanelComponent } from './router-panel/router-panel.component';
+import { ZaposleniciComponent } from './zaposlenici/zaposlenici.component';
+import { ZmodalComponent } from './zaposlenici/zmodal/zmodal.component';
+import { LokacijaComponent } from './lokacija/lokacija.component';
+import { ProdavnicaComponent } from './prodavnica/prodavnica.component';
+import { PrmodalComponent } from './prodavnica/prmodal/prmodal.component';
+import { ProdavnicaPregledComponent } from './prodavnica-pregled/prodavnica-pregled.component';
+import { KorpaProizvodiComponent } from './korpa-proizvodi/korpa-proizvodi.component';
+import { DostavljacComponent } from './dostavljac/dostavljac.component';
+import { DmodalComponent } from './dostavljac/dmodal/dmodal.component';
+import {NgChartsModule} from "ng2-charts";
 
 
 
@@ -42,35 +52,51 @@ import { RouterPanelComponent } from './router-panel/router-panel.component';
     ProizvodiPregledComponent,
     AdminComponent,
     RouterPanelComponent,
+    ZaposleniciComponent,
+    ZmodalComponent,
+    LokacijaComponent,
+    ProdavnicaComponent,
+    PrmodalComponent,
+    ProdavnicaPregledComponent,
+    KorpaProizvodiComponent,
+    DostavljacComponent,
+    DmodalComponent,
 
   ],
-  imports: [
-    BrowserModule,
-    RouterModule.forRoot([
-      {path: 'registracija', component: RegistracijaComponent},
-      {path: 'login', component: LoginComponent},
-      {path: 'pocetna', component: PocetnaComponent},
-      {path: 'proizvodi-pregled', component: ProizvodiPregledComponent},
-      {path: 'admin', component: AdminComponent},
-      {path: 'proizvodi', component: ProizvodiComponent},
-      {path: '', component: PocetnaComponent}
+    imports: [
+        BrowserModule,
+        RouterModule.forRoot([
+            {path: 'registracija', component: RegistracijaComponent},
+            {path: 'login', component: LoginComponent},
+            {path: 'pocetna', component: PocetnaComponent},
+            {path: 'proizvodi-pregled', component: ProizvodiPregledComponent},
+            {path: 'admin', component: AdminComponent},
+            {path: 'proizvodi', component: ProizvodiComponent},
+            {path: '', component: PocetnaComponent},
+            {path: 'zaposlenici', component: ZaposleniciComponent},
+            {path: 'lokacija', component: LokacijaComponent},
+            {path: 'prodavnica', component: ProdavnicaComponent},
+            {path: 'prodavnica-pregled', component: ProdavnicaPregledComponent},
+            {path: 'dostavljac', component: DostavljacComponent}
 
-    ]),
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    MatInputModule,
-    MatDatepickerModule,
-    BrowserAnimationsModule,
-    MatIconModule,
-    MatButtonModule,
-    MatTableModule,
-    MatDialogModule,
-    MatSelectModule,
-    MatGridListModule,
-    MatCardModule,
-    MatPaginatorModule
-  ],
+        ]),
+        FormsModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        MatInputModule,
+        MatDatepickerModule,
+        BrowserAnimationsModule,
+        MatIconModule,
+        MatButtonModule,
+        MatTableModule,
+        MatDialogModule,
+        MatSelectModule,
+        MatGridListModule,
+        MatCardModule,
+        MatPaginatorModule,
+        MatNativeDateModule,
+        NgChartsModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

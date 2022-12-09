@@ -7,6 +7,8 @@ import {Observable} from "rxjs";
 import {MatPaginator} from "@angular/material/paginator";
 import {Proizvod, ProizvodService} from '../servisi/proizvod.service';
 import {HttpParams} from "@angular/common/http";
+import {Token} from "../servisi/korisnik.service";
+import {loadCompilerCliMigrationsModule} from "@angular/core/schematics/utils/load_esm";
 
 
 interface Sort{
@@ -28,6 +30,7 @@ export interface ProizvodiSearchObject{
   styleUrls: ['./proizvodi-pregled.component.css']
 })
 export class ProizvodiPregledComponent implements OnInit {
+
 
   search:ProizvodiSearchObject = <ProizvodiSearchObject>{};
   listDobavljaci:Dobavljac[] = [];

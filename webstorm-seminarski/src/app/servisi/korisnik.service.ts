@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {ApiService} from "./api.service";
 import {Subject} from "rxjs";
+import {Spol} from "./spol.service";
+import {Drzava} from "./drzava.service";
 
 export interface Korisnik extends LoginKorisnik{
   id:string,
@@ -12,7 +14,9 @@ export interface Korisnik extends LoginKorisnik{
   brojTelefona : string,
   adresa : string,
   drzavaId : number,
+  drzava:Drzava,
   spolId : number,
+  spol:Spol,
   roles : string[]
 }
 

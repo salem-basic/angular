@@ -3,34 +3,22 @@ import {Proizvod, ProizvodService} from "../servisi/proizvod.service";
 import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
 import {HttpClient, HttpParams} from "@angular/common/http";
+import {Prodavnica, ProdavnicaService} from "../servisi/prodavnica.service";
 import {MatDialog} from "@angular/material/dialog";
-import {PmodalComponent} from "./pmodal/pmodal.component";
-import {SignalrService} from "../servisi/signalr.service";
-import {ChartConfiguration, ChartType} from "chart.js";
+import {PmodalComponent} from "../proizvodi/pmodal/pmodal.component";
+import {PrmodalComponent} from "./prmodal/prmodal.component";
 
 @Component({
-  selector: 'app-proizvodi',
-  templateUrl: './proizvodi.component.html',
-  styleUrls: ['./proizvodi.component.css']
+  selector: 'app-prodavnica',
+  templateUrl: './prodavnica.component.html',
+  styleUrls: ['./prodavnica.component.css']
 })
-export class ProizvodiComponent implements OnInit {
-
-  chartOptions: ChartConfiguration['options'] = {
-    responsive: true,
-    scales: {
-      y: {
-        min: 0
-      }
-    }
-  };
-  chartLabels: string[] = ['Real time data for the chart'];
-  chartType: ChartType = 'bar';
-  chartLegend: boolean = true;
+export class ProdavnicaComponent implements OnInit {
 
   filter:string= '';
-  dodajProizvod:Proizvod = <Proizvod>{};
-  displayedColumns: string[] = ['nazivProizvoda','valuta', 'cijena', 'serijskiBroj','slika','kategorija', 'dobavljac', 'brend', 'akcija', 'korisnik'];
-  dataSource = new MatTableDataSource<Proizvod>();
+  dodajProdavnicu:Prodavnica = <Prodavnica>{};
+  displayedColumns: string[] = ['naziv','adresa', 'telefon','akcija', 'slika'];
+  dataSource = new MatTableDataSource<Prodavnica>();
   @ViewChild('paginator') paginator: MatPaginator;
 
   ngAfterViewInit(){
@@ -42,7 +30,7 @@ export class ProizvodiComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
   }
 
-  constructor(private httpKlijent:HttpClient, private service : ProizvodService,private dialog:MatDialog) { }
+  constructor(private httpKlijent:HttpClient, private service : ProdavnicaService,private dialog:MatDialog) { }
 
   ngOnInit(): void {
     this.service.Get(new HttpParams()).subscribe(x => {
@@ -69,7 +57,7 @@ export class ProizvodiComponent implements OnInit {
   }
 
   Uredi(x: Proizvod) {
-    let dialogRef = this.dialog.open(PmodalComponent, {data:x,  width:'30%',height:'70%'})
+    let dialogRef = this.dialog.open(PrmodalComponent, {data:x,  width:'30%',height:'70%'})
 
     dialogRef.afterClosed().subscribe(x => {
       this.service.Update(x.id , x).subscribe( () =>{
@@ -80,18 +68,18 @@ export class ProizvodiComponent implements OnInit {
   }
 
   Novi(){
-    let dialogRef = this.dialog.open(PmodalComponent, {data:this.dodajProizvod,  width:'30%',height:'70%'})
+    let dialogRef = this.dialog.open(PrmodalComponent, {data:this.dodajProdavnicu,  width:'30%',height:'70%'})
 
     dialogRef.afterClosed().subscribe(x => {
       this.Dodaj(x);
     })
   }
 
-  Dodaj(x: Proizvod) {
+  Dodaj(x: Prodavnica) {
     this.service.Add(x).subscribe(() => {
       alert("Uspjesno dodavanje proizvoda");
       this.UcitajPodatke();
-      this.dodajProizvod = <Proizvod>{};
+      this.dodajProdavnicu = <Prodavnica>{};
     })
   }
 }
