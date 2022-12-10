@@ -2,7 +2,7 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {ApiService} from "../servisi/api.service";
 import {KorisnikService} from "../servisi/korisnik.service";
 import {Korisnik} from "../servisi/korisnik.service";
-import {FormControl, FormGroup, Validators, FormBuilder} from "@angular/forms";
+import {FormControl, FormGroup, Validators, UntypedFormBuilder} from "@angular/forms";
 import {HttpClient} from "@angular/common/http";
 import {MAT_DIALOG_DATA} from "@angular/material/dialog";
 
@@ -16,7 +16,7 @@ import {MAT_DIALOG_DATA} from "@angular/material/dialog";
 export class RegistracijaComponent implements OnInit {
 
   constructor(private httpKlijent : HttpClient, private service : KorisnikService,
-              private formBuilder:FormBuilder) { }
+              private formBuilder:UntypedFormBuilder) { }
 
   dodajKorisnika:Korisnik = <Korisnik>{};
 

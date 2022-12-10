@@ -3,7 +3,7 @@ import {Korisnik, LoginKorisnik, Token} from "../servisi/korisnik.service";
 import {HttpClient} from "@angular/common/http";
 import {KorisnikService} from "../servisi/korisnik.service";
 import {ApiService} from "../servisi/api.service";
-import {FormBuilder, Validators} from "@angular/forms";
+import {UntypedFormBuilder, Validators} from "@angular/forms";
 
 
 @Component({
@@ -14,7 +14,7 @@ import {FormBuilder, Validators} from "@angular/forms";
 export class LoginComponent implements OnInit {
 
   constructor(private httpKlijent : HttpClient, private service : KorisnikService,
-              private formBuilder:FormBuilder) { }
+              private formBuilder:UntypedFormBuilder) { }
 
   loginKorisnik:LoginKorisnik = <LoginKorisnik>{};
 

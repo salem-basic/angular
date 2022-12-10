@@ -7,6 +7,7 @@ import * as signalR from "@microsoft/signalr"
 })
 export class SignalrService {
   public data: ChartModel[];
+
   private hubConnection: signalR.HubConnection
   public startConnection = () => {
     this.hubConnection = new signalR.HubConnectionBuilder()

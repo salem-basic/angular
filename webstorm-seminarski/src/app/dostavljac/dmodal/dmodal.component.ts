@@ -1,6 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {Drzava, DrzavaService} from "../../servisi/drzava.service";
-import {FormBuilder, Validators} from "@angular/forms";
+import {UntypedFormBuilder, Validators} from "@angular/forms";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {HttpParams} from "@angular/common/http";
 
@@ -19,7 +19,7 @@ export class DmodalComponent implements OnInit {
     drzava:['' , [Validators.required]]
   })
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data:any , private formBuilder:FormBuilder,
+  constructor(@Inject(MAT_DIALOG_DATA) public data:any , private formBuilder:UntypedFormBuilder,
               private dialog:MatDialogRef<DmodalComponent>, private serviceDrzava:DrzavaService) { }
 
   ngOnInit(): void {

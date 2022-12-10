@@ -3,7 +3,7 @@ import {Dobavljac, DobavljacService} from "../../servisi/dobavljac.service";
 import {Kategorija, KategorijaService} from "../../servisi/kategorija.service";
 import {Brend, BrendService} from "../../servisi/brend.service";
 import {Valuta, ValutaService} from "../../servisi/valuta.service";
-import {FormBuilder, Validators} from "@angular/forms";
+import {UntypedFormBuilder, Validators} from "@angular/forms";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {HttpParams} from "@angular/common/http";
 import {Observable, Subscriber} from "rxjs";
@@ -38,7 +38,7 @@ export class PmodalComponent implements OnInit {
   constructor(private dialog:MatDialogRef<PmodalComponent>, private serviceDobavljac:DobavljacService,
               private serviceKategorija : KategorijaService, private serviceValuta:ValutaService,
               private serviceBrend : BrendService, private serviceKorisnik: KorisnikService,
-              @Inject(MAT_DIALOG_DATA) public data:any , private formBuilder:FormBuilder) { }
+              @Inject(MAT_DIALOG_DATA) public data:any , private formBuilder:UntypedFormBuilder) { }
 
   ngOnInit(): void {
     this.serviceDobavljac.Get(new HttpParams()).subscribe(x => {

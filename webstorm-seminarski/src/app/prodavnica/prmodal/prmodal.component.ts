@@ -1,5 +1,5 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {FormBuilder, Validators} from "@angular/forms";
+import {UntypedFormBuilder, Validators} from "@angular/forms";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {ProdavnicaService} from "../../servisi/prodavnica.service";
 import {Observable, Subscriber} from "rxjs";
@@ -19,7 +19,7 @@ export class PrmodalComponent implements OnInit {
   })
 
   constructor(private dialog:MatDialogRef<PrmodalComponent>, private service:ProdavnicaService,
-              @Inject(MAT_DIALOG_DATA) public data:any , private formBuilder:FormBuilder) { }
+              @Inject(MAT_DIALOG_DATA) public data:any , private formBuilder:UntypedFormBuilder) { }
 
   ngOnInit(): void {
   }

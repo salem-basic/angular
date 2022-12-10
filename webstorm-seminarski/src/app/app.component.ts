@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {SignalrService} from "./servisi/signalr.service";
 import {HttpClient} from "@angular/common/http";
 

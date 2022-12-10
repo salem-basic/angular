@@ -1,7 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {Drzava, DrzavaService} from "../../servisi/drzava.service";
 import {Spol, SpolService} from "../../servisi/spol.service";
-import {FormBuilder, Validators} from "@angular/forms";
+import {UntypedFormBuilder, Validators} from "@angular/forms";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {KorisnikService} from "../../servisi/korisnik.service";
 import {HttpParams} from "@angular/common/http";
@@ -29,7 +29,7 @@ export class ZmodalComponent implements OnInit {
   })
 
   constructor(private dialog:MatDialogRef<ZmodalComponent>,@Inject(MAT_DIALOG_DATA) public data:any ,
-              private formBuilder:FormBuilder,
+              private formBuilder:UntypedFormBuilder,
               private serviceSpol:SpolService, private serviceDrzava:DrzavaService) { }
 
   ngOnInit(): void {
