@@ -16,7 +16,7 @@ export class AppComponent {
   }
 
   private startHttpRequest = () => {
-    this.http.get('http://localhost:44324/api/chart')
+    this.http.get('https://localhost:7025/api/chart')
       .subscribe(res => {
         console.log(res);
       })

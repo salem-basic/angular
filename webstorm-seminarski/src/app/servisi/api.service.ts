@@ -5,7 +5,7 @@ import {HttpClient, HttpParams} from "@angular/common/http";
 export class ApiService<T> {
 
   _endpoint:string = '';
-  _url:string = 'https://localhost:44324/api/';
+  _url:string = 'https://localhost:7025/api/';
 
   constructor(endpoint:string, public httpKlijent : HttpClient) {
     this._endpoint = endpoint;
