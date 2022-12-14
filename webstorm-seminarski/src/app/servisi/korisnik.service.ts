@@ -4,6 +4,7 @@ import {ApiService} from "./api.service";
 import {Subject} from "rxjs";
 import {Spol} from "./spol.service";
 import {Drzava} from "./drzava.service";
+import {JwtHelperService} from "@auth0/angular-jwt";
 
 export interface Korisnik extends LoginKorisnik{
   id:string,
@@ -39,10 +40,16 @@ export class KorisnikService extends ApiService<Korisnik>{
   private authChangeSub = new Subject<boolean>()
   public authChanged = this.authChangeSub.asObservable();
 
-  constructor(htppKlijent : HttpClient) { super('Korisnik', htppKlijent) }
+  constructor(htppKlijent : HttpClient, private jwtHelper : JwtHelperService) { super('Korisnik', htppKlijent) }
 
   public sendAuthStateChangeNotification = (isAuthenticated: boolean) => {
     this.authChangeSub.next(isAuthenticated);
+  }
+
+  public isUserAuthenticated = (): boolean => {
+    const token = localStorage.getItem("token");
+
+    return token && !this.jwtHelper.isTokenExpired(token);
   }
 
   Registracija(object : Korisnik){
@@ -55,6 +62,26 @@ export class KorisnikService extends ApiService<Korisnik>{
 
   public logout = () => {
     localStorage.removeItem("token");
-    this.sendAuthStateChangeNotification(false);
+  }
+
+  public isLoginActive() {
+    const token = localStorage.getItem("token");
+    if (token && !this.jwtHelper.isTokenExpired(token)){
+      return true;
+    }
+    return false;
+  }
+  public isUserAdmin = (): boolean => {
+    const token = localStorage.getItem("token");
+    const decodedToken = this.jwtHelper.decodeToken(token);
+    const role = decodedToken['http://schemas.microsoft.com/ws/2008/06/identity/claims/role']
+    return role === 'Admin';
+  }
+
+  public isUserZaposlenik = (): boolean => {
+    const token = localStorage.getItem("token");
+    const decodedToken = this.jwtHelper.decodeToken(token);
+    const role = decodedToken['http://schemas.microsoft.com/ws/2008/06/identity/claims/role']
+    return role === 'Zaposlenik';
   }
 }

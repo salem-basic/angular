@@ -19,8 +19,6 @@ export interface Proizvod{
   dobavljac:Dobavljac,
   brendId:number,
   brend:Brend,
-  korisnikId:string,
-  korisnik:Korisnik
 }
 
 @Injectable({

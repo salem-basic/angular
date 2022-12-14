@@ -29,7 +29,7 @@ export class ProizvodiComponent implements OnInit {
 
   filter:string= '';
   dodajProizvod:Proizvod = <Proizvod>{};
-  displayedColumns: string[] = ['nazivProizvoda','valuta', 'cijena', 'serijskiBroj','slika','kategorija', 'dobavljac', 'brend', 'akcija', 'korisnik'];
+  displayedColumns: string[] = ['nazivProizvoda','valuta', 'cijena', 'serijskiBroj','slika','kategorija', 'dobavljac', 'brend', 'akcija'];
   dataSource = new MatTableDataSource<Proizvod>();
   @ViewChild('paginator') paginator: MatPaginator;
 

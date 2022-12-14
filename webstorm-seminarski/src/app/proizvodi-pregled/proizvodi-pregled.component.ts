@@ -9,6 +9,11 @@ import {Proizvod, ProizvodService} from '../servisi/proizvod.service';
 import {HttpParams} from "@angular/common/http";
 import {Token} from "../servisi/korisnik.service";
 import {loadCompilerCliMigrationsModule} from "@angular/core/schematics/utils/load_esm";
+import {PmodalComponent} from "../proizvodi/pmodal/pmodal.component";
+import {MatDialog} from "@angular/material/dialog";
+import {ActivatedRoute} from "@angular/router";
+import {CartService} from "../cart.service";
+import {ProductDetailsComponent} from "../product-details/product-details.component";
 
 
 interface Sort{
@@ -31,7 +36,6 @@ export interface ProizvodiSearchObject{
 })
 export class ProizvodiPregledComponent implements OnInit {
 
-
   search:ProizvodiSearchObject = <ProizvodiSearchObject>{};
   listDobavljaci:Dobavljac[] = [];
   listKategorije:Kategorija[] = [];
@@ -47,7 +51,8 @@ export class ProizvodiPregledComponent implements OnInit {
   dataSource: MatTableDataSource<Proizvod> = new MatTableDataSource<Proizvod>();
 
   constructor(private ProizvodiService : ProizvodService, private DobavljaciService:DobavljacService, private KategorijaService:KategorijaService,
-              private BrendService:BrendService, private changeDetectorRef: ChangeDetectorRef) { }
+              private BrendService:BrendService, private changeDetectorRef: ChangeDetectorRef, private dialog:MatDialog, private cartService : CartService
+              ) { }
 
   ngOnInit(): void {
     this.ProizvodiService.Get(new HttpParams()).subscribe(x => {
@@ -95,4 +100,10 @@ export class ProizvodiPregledComponent implements OnInit {
     })
   }
 
+  Otvori(x: Proizvod){
+    let dialogRef = this.dialog.open(ProductDetailsComponent, {data:x,width:'30%',height:'70%' })
+
+    dialogRef.afterClosed().subscribe(x => {
+      this.cartService.addToCart(x) })
+  }
 }

@@ -21,7 +21,6 @@ export class PmodalComponent implements OnInit {
   kategorija!:Kategorija[];
   brend!:Brend[];
   valuta!:Valuta[];
-  korisnik!:Korisnik[];
 
   profileForm = this.formBuilder.group({
     nazivProizvoda:['' , [Validators.minLength(3),Validators.required]],
@@ -30,14 +29,13 @@ export class PmodalComponent implements OnInit {
     dobavljac:['' , Validators.required],
     kategorija:['' , Validators.required],
     brend:['' , Validators.required],
-    valuta:['' , Validators.required],
-    korisnik:['' , Validators.required]
+    valuta:['' , Validators.required]
   })
 
 
   constructor(private dialog:MatDialogRef<PmodalComponent>, private serviceDobavljac:DobavljacService,
               private serviceKategorija : KategorijaService, private serviceValuta:ValutaService,
-              private serviceBrend : BrendService, private serviceKorisnik: KorisnikService,
+              private serviceBrend : BrendService,
               @Inject(MAT_DIALOG_DATA) public data:any , private formBuilder:UntypedFormBuilder) { }
 
   ngOnInit(): void {
@@ -52,9 +50,6 @@ export class PmodalComponent implements OnInit {
     })
     this.serviceBrend.Get(new HttpParams()).subscribe(x => {
       this.brend = x;
-    })
-    this.serviceKorisnik.Get(new HttpParams()).subscribe(x => {
-      this.korisnik = x;
     })
   }
 

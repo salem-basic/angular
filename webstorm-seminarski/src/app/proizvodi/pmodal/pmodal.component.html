@@ -58,15 +58,6 @@
         </mat-select>
         <mat-hint style="color: red" *ngIf="profileForm.get('valuta').touched && profileForm.get('valuta').errors?.['required']">Ovo polje je obavezno</mat-hint>
       </mat-form-field>
-      <mat-form-field hideRequiredMarker="true" appearance="fill">
-        <mat-label>Odaberite korisnika</mat-label>
-        <mat-select formControlName="korisnik" hideRequiredMarker="true" [(ngModel)]="data.korisnikId">
-          <mat-option *ngFor="let korisnici of korisnik" [value]="korisnici.id">
-            {{korisnici.ime}}
-          </mat-option>
-        </mat-select>
-        <mat-hint style="color: red" *ngIf="profileForm.get('korisnik').touched && profileForm.get('korisnik').errors?.['required']">Ovo polje je obavezno</mat-hint>
-      </mat-form-field>
     </mat-dialog-content>
     <mat-dialog-actions class="buttons">
       <button mat-raised-button mat-dialog-close="">Close</button>
