@@ -10,19 +10,7 @@ import {SignalrService} from "../servisi/signalr.service";
 })
 export class AdminComponent implements OnInit {
 
-  chartOptions: ChartConfiguration['options'] = {
-    responsive: true,
-    scales: {
-      y: {
-        min: 0
-      }
-    }
-  };
-  chartLabels: string[] = ['Real time chartovi - SignalR'];
-  chartType: ChartType = 'bar';
-  chartLegend: boolean = true;
 
-  constructor(public signalRService: SignalrService) { }
 
   ngOnInit(): void {
   }

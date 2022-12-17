@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {ChartConfiguration, ChartType} from "chart.js";
+import {Signalr2Service} from "../servisi/signalr2.service";
 
 @Component({
   selector: 'app-router-zaposlenik',
@@ -7,7 +9,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RouterZaposlenikComponent implements OnInit {
 
-  constructor() { }
 
   ngOnInit(): void {
   }

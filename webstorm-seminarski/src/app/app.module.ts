@@ -45,6 +45,9 @@ import {AdminGuard} from "./guards/admin.guard";
 import {ZaposlenikGuard} from "./guards/zaposlenik.guard";
 import { ZaposlenikPanelComponent } from './zaposlenik-panel/zaposlenik-panel.component';
 import { RouterZaposlenikComponent } from './router-zaposlenik/router-zaposlenik.component';
+import { ChartAdminComponent } from './chart-admin/chart-admin.component';
+import { ZaposlenikChartComponent } from './zaposlenik-chart/zaposlenik-chart.component';
+
 
 export function tokenGetter() {
   return localStorage.getItem("token");
@@ -76,6 +79,8 @@ export function tokenGetter() {
     ForbiddenComponent,
     ZaposlenikPanelComponent,
     RouterZaposlenikComponent,
+    ChartAdminComponent,
+    ZaposlenikChartComponent,
 
   ],
     imports: [
@@ -91,12 +96,16 @@ export function tokenGetter() {
             {path: 'zaposlenici', component: ZaposleniciComponent, canActivate:[AdminGuard]},
             {path: 'lokacija', component: LokacijaComponent},
             {path: 'prodavnica', component: ProdavnicaComponent, canActivate:[AdminGuard]},
-            {path: 'prodavnica-pregled', component: ProdavnicaPregledComponent, canActivate:[AuthGuard]},
+            {path: 'prodavnica-pregled', component: ProdavnicaPregledComponent},
             {path: 'dostavljac', component: DostavljacComponent, canActivate:[ZaposlenikGuard]},
             {path: 'detalji', component: ProductDetailsComponent},
             {path: 'korpa', component: CartComponent},
             {path: 'forbidden', component: ForbiddenComponent},
-            {path: 'zaposlenik-panel', component: ZaposlenikPanelComponent, canActivate:[ZaposlenikGuard]}
+            {path: 'zaposlenik-panel', component: ZaposlenikPanelComponent, canActivate:[ZaposlenikGuard]},
+            {path: 'chartAdmin', component: ChartAdminComponent},
+            {path: 'chartZaposlenik', component: ZaposlenikChartComponent}
+
+
         ]),
       JwtModule.forRoot({
         config: {

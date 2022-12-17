@@ -60,6 +60,7 @@ export class KorisnikService extends ApiService<Korisnik>{
     return this.httpKlijent.post<LoginKorisnik>(`${this._url}${'Korisnik/login'}`, object );
   }
 
+
   public logout = () => {
     localStorage.removeItem("token");
   }

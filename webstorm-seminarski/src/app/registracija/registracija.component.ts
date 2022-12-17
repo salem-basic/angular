@@ -17,10 +17,11 @@ import {Spol, SpolService} from "../servisi/spol.service";
 })
 export class RegistracijaComponent implements OnInit {
 
+spolovi:Spol[];
+drzave:Drzava[];
 
-
-  constructor(private httpKlijent : HttpClient, private service : KorisnikService,
-              private formBuilder:FormBuilder, private dialogRef : MatDialogRef<any>) { }
+  constructor(private httpKlijent : HttpClient, private service : KorisnikService, private servisSpol : SpolService,
+              private servisDrzava : DrzavaService, private formBuilder:FormBuilder, private dialogRef : MatDialogRef<any>) { }
 
   dodajKorisnika:Korisnik = <Korisnik>{};
 
@@ -37,11 +38,13 @@ export class RegistracijaComponent implements OnInit {
     lozinka:['' , [Validators.minLength(3),Validators.required]],
   })
 
-
-
-
   ngOnInit(): void {
-
+    this.servisSpol.Get(new HttpParams()).subscribe(x => {
+      this.spolovi = x;
+    }),
+      this.servisDrzava.Get(new HttpParams()).subscribe(x => {
+        this.drzave = x;
+      })
   }
 
   Dodaj(x:Korisnik) {

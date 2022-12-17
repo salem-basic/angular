@@ -44,12 +44,6 @@
         <mat-hint style="color: red" *ngIf="profileForm.get('adresa').touched && profileForm.get('adresa').errors?.['required']">Ovo polje je obavezno</mat-hint>
         <mat-hint style="color: red" *ngIf="profileForm.get('adresa').errors?.['digits']">Ovo polje mora imati samo brojeve</mat-hint>
       </mat-form-field>
-      <mat-form-field hideRequiredMarker="true" class="example-full-width" appearance="fill">
-        <mat-label>Uloge</mat-label>
-        <input formControlName="roles" matInput [(ngModel)]="data.roles">
-        <mat-hint style="color: red" *ngIf="profileForm.get('roles').touched && profileForm.get('roles').errors?.['required']">Ovo polje je obavezno</mat-hint>
-        <mat-hint style="color: red" *ngIf="profileForm.get('roles').errors?.['digits']">Ovo polje mora imati samo brojeve</mat-hint>
-      </mat-form-field>
       <mat-form-field hideRequiredMarker="true" appearance="fill">
         <mat-label>Odaberite drzavu</mat-label>
         <mat-select formControlName="drzava" hideRequiredMarker="true" [(ngModel)]="data.drzavaId">

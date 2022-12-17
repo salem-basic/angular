@@ -100,10 +100,4 @@ export class ProizvodiPregledComponent implements OnInit {
     })
   }
 
-  Otvori(x: Proizvod){
-    let dialogRef = this.dialog.open(ProductDetailsComponent, {data:x,width:'30%',height:'70%' })
-
-    dialogRef.afterClosed().subscribe(x => {
-      this.cartService.addToCart(x) })
-  }
 }

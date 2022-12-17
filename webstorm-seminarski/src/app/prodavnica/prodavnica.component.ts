@@ -7,6 +7,7 @@ import {Prodavnica, ProdavnicaService} from "../servisi/prodavnica.service";
 import {MatDialog} from "@angular/material/dialog";
 import {PmodalComponent} from "../proizvodi/pmodal/pmodal.component";
 import {PrmodalComponent} from "./prmodal/prmodal.component";
+import {ChartConfiguration, ChartType} from "chart.js";
 
 @Component({
   selector: 'app-prodavnica',
@@ -14,6 +15,18 @@ import {PrmodalComponent} from "./prmodal/prmodal.component";
   styleUrls: ['./prodavnica.component.css']
 })
 export class ProdavnicaComponent implements OnInit {
+
+  chartOptions: ChartConfiguration['options'] = {
+    responsive: true,
+    scales: {
+      y: {
+        min: 0
+      }
+    }
+  };
+  chartLabels: string[] = ['Real time data for the chart'];
+  chartType: ChartType = 'bar';
+  chartLegend: boolean = true;
 
   filter:string= '';
   dodajProdavnicu:Prodavnica = <Prodavnica>{};

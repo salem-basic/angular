@@ -29,13 +29,21 @@
         </mat-form-field>
         <mat-form-field hideRequiredMarker="true" class="example-full-width" appearance="fill">
           <mat-label>Drzava</mat-label>
-          <input formControlName="drzavaId" matInput [(ngModel)]="dodajKorisnika.drzavaId">
+          <mat-select formControlName="drzavaId" hideRequiredMarker="true" [(ngModel)]="dodajKorisnika.drzavaId">
+            <mat-option *ngFor="let drzava of drzave" [value]="drzava.id">
+              {{drzava.nazivDrzave}}
+            </mat-option>
+          </mat-select>
           <mat-hint style="color: red" *ngIf="profileForm.get('drzavaId').touched && profileForm.get('drzavaId').errors?.['required']">Ovo polje je obavezno</mat-hint>
           <mat-hint style="color: red" *ngIf="profileForm.get('drzavaId').errors?.['minlength']">Ovo polje mora imati minimalno 3 karaktera</mat-hint>
         </mat-form-field>
         <mat-form-field hideRequiredMarker="true" class="example-full-width" appearance="fill">
           <mat-label>Spol</mat-label>
-          <input formControlName="spolId" matInput [(ngModel)]="dodajKorisnika.spolId">
+          <mat-select formControlName="spolId" hideRequiredMarker="true" [(ngModel)]="dodajKorisnika.spolId">
+            <mat-option *ngFor="let spol of spolovi" [value]="spol.id">
+              {{spol.nazivSpola}}
+            </mat-option>
+          </mat-select>
           <mat-hint style="color: red" *ngIf="profileForm.get('spolId').touched && profileForm.get('spolId').errors?.['required']">Ovo polje je obavezno</mat-hint>
           <mat-hint style="color: red" *ngIf="profileForm.get('spolId').errors?.['minlength']">Ovo polje mora imati minimalno 3 karaktera</mat-hint>
         </mat-form-field>

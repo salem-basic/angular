@@ -17,7 +17,7 @@ export class ZaposleniciComponent implements OnInit {
 
   filterIme='';
   dodajZaposlenika:Korisnik = <Korisnik>{};
-  displayedColumns: string[] = ['ime', 'prezime', 'datumRodjenja', 'grad', 'brojTelefona', 'adresa', 'drzava', 'spol', 'roles','akcija'];
+  displayedColumns: string[] = ['ime', 'prezime', 'datumRodjenja', 'grad', 'brojTelefona', 'adresa', 'drzava', 'spol','akcija'];
   dataSource = new MatTableDataSource<Korisnik>();
   @ViewChild('paginator') paginator: MatPaginator;
 

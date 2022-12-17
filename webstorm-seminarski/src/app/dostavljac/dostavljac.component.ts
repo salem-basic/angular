@@ -8,6 +8,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {Proizvod} from "../servisi/proizvod.service";
 import {PmodalComponent} from "../proizvodi/pmodal/pmodal.component";
 import {DmodalComponent} from "./dmodal/dmodal.component";
+import {ChartConfiguration, ChartType} from "chart.js";
 
 @Component({
   selector: 'app-dostavljac',
@@ -15,6 +16,18 @@ import {DmodalComponent} from "./dmodal/dmodal.component";
   styleUrls: ['./dostavljac.component.css']
 })
 export class DostavljacComponent implements OnInit {
+
+  chartOptions: ChartConfiguration['options'] = {
+    responsive: true,
+    scales: {
+      y: {
+        min: 0
+      }
+    }
+  };
+  chartLabels: string[] = ['Real time data for the chart'];
+  chartType: ChartType = 'bar';
+  chartLegend: boolean = true;
 
   filter:string='';
   dodajDostavljaca : Dostavljac = <Dostavljac>{};
