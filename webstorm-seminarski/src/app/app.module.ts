@@ -47,6 +47,7 @@ import { ZaposlenikPanelComponent } from './zaposlenik-panel/zaposlenik-panel.co
 import { RouterZaposlenikComponent } from './router-zaposlenik/router-zaposlenik.component';
 import { ChartAdminComponent } from './chart-admin/chart-admin.component';
 import { ZaposlenikChartComponent } from './zaposlenik-chart/zaposlenik-chart.component';
+import { RecenzijaComponent } from './recenzija/recenzija.component';
 
 
 export function tokenGetter() {
@@ -81,6 +82,7 @@ export function tokenGetter() {
     RouterZaposlenikComponent,
     ChartAdminComponent,
     ZaposlenikChartComponent,
+    RecenzijaComponent,
 
   ],
     imports: [
@@ -103,9 +105,8 @@ export function tokenGetter() {
             {path: 'forbidden', component: ForbiddenComponent},
             {path: 'zaposlenik-panel', component: ZaposlenikPanelComponent, canActivate:[ZaposlenikGuard]},
             {path: 'chartAdmin', component: ChartAdminComponent},
-            {path: 'chartZaposlenik', component: ZaposlenikChartComponent}
-
-
+            {path: 'chartZaposlenik', component: ZaposlenikChartComponent},
+            {path: 'proizvod-recenzija/:id', component: RecenzijaComponent, canActivate:[AuthGuard]}
         ]),
       JwtModule.forRoot({
         config: {

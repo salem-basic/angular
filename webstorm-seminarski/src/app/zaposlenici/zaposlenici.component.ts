@@ -76,7 +76,7 @@ export class ZaposleniciComponent implements OnInit {
   }
 
   Dodaj(x: Korisnik) {
-    this.service.Add(x).subscribe(() => {
+    this.service.dodajZaposlenika(x).subscribe(() => {
       alert("Uspjesno dodavanje zaposlenika");
       this.UcitajPodatke();
       this.dodajZaposlenika = <Korisnik>{};

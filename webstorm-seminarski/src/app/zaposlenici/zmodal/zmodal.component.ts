@@ -25,6 +25,9 @@ export class ZmodalComponent implements OnInit {
     adresa:['' , [Validators.minLength(5),Validators.required]],
     drzava:['' , [Validators.minLength(1),Validators.required]],
     spol:['' , [Validators.minLength(1),Validators.required]],
+    email:['' , [Validators.minLength(1),Validators.required]],
+    lozinka:['' , [Validators.minLength(1),Validators.required]],
+
   })
 
   constructor(private dialog:MatDialogRef<ZmodalComponent>,@Inject(MAT_DIALOG_DATA) public data:any ,

@@ -72,7 +72,7 @@ export class DostavljacComponent implements OnInit {
   }
 
   Uredi(x: Dostavljac) {
-    let dialogRef = this.dialog.open(DmodalComponent, {data:x,  width:'30%',height:'70%'})
+    let dialogRef = this.dialog.open(DmodalComponent, {data:x,  width:'30%',height:'50%'})
 
     dialogRef.afterClosed().subscribe(x => {
       this.serviceDostavljac.Update(x.id , x).subscribe( () =>{
@@ -83,7 +83,7 @@ export class DostavljacComponent implements OnInit {
   }
 
   Novi(){
-    let dialogRef = this.dialog.open(DmodalComponent, {data:this.dodajDostavljaca,  width:'30%',height:'70%'})
+    let dialogRef = this.dialog.open(DmodalComponent, {data:this.dodajDostavljaca,  width:'30%',height:'50%'})
 
     dialogRef.afterClosed().subscribe(x => {
       this.Dodaj(x);

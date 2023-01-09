@@ -61,6 +61,11 @@ export class KorisnikService extends ApiService<Korisnik>{
   }
 
 
+
+  dodajZaposlenika(object : Korisnik){
+    return this.httpKlijent.post<Korisnik>(`${this._url}${'Korisnik/dodajZaposlenika'}`, object );
+  }
+
   public logout = () => {
     localStorage.removeItem("token");
   }
@@ -84,5 +89,12 @@ export class KorisnikService extends ApiService<Korisnik>{
     const decodedToken = this.jwtHelper.decodeToken(token);
     const role = decodedToken['http://schemas.microsoft.com/ws/2008/06/identity/claims/role']
     return role === 'Zaposlenik';
+  }
+
+  public GetUserName = (): string => {
+    const token = localStorage.getItem("token");
+    const decodedToken = this.jwtHelper.decodeToken(token);
+    const name = decodedToken['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname']
+    return name;
   }
 }

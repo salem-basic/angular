@@ -11,7 +11,7 @@ import {Token} from "../servisi/korisnik.service";
 import {loadCompilerCliMigrationsModule} from "@angular/core/schematics/utils/load_esm";
 import {PmodalComponent} from "../proizvodi/pmodal/pmodal.component";
 import {MatDialog} from "@angular/material/dialog";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Route, Router} from "@angular/router";
 import {CartService} from "../cart.service";
 import {ProductDetailsComponent} from "../product-details/product-details.component";
 
@@ -51,8 +51,8 @@ export class ProizvodiPregledComponent implements OnInit {
   dataSource: MatTableDataSource<Proizvod> = new MatTableDataSource<Proizvod>();
 
   constructor(private ProizvodiService : ProizvodService, private DobavljaciService:DobavljacService, private KategorijaService:KategorijaService,
-              private BrendService:BrendService, private changeDetectorRef: ChangeDetectorRef, private dialog:MatDialog, private cartService : CartService
-              ) { }
+              private BrendService:BrendService, private changeDetectorRef: ChangeDetectorRef, private dialog:MatDialog, private cartService : CartService,
+              private ruter : Router) { }
 
   ngOnInit(): void {
     this.ProizvodiService.Get(new HttpParams()).subscribe(x => {
@@ -100,4 +100,8 @@ export class ProizvodiPregledComponent implements OnInit {
     })
   }
 
+  otvori_recenziju(r:any){
+   // this.ruter.navigateByUrl('/proizvod-recenzija', r.id)
+    this.ruter.navigate(['/proizvod-recenzija', r.id]);
+  }
 }

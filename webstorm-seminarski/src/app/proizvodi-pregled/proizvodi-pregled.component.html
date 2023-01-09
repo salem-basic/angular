@@ -65,14 +65,15 @@
                 <p style="font-size: 12px">
                   Cijena: {{x.cijena}} KM
                 </p>
+
+                <mat-card-actions style="margin-top:10px">
+                  <div style="display: flex ; justify-content: center"><button mat-raised-button style="width: 90%;margin-bottom: 5px;" color="accent" (click)="otvori_recenziju(x)">Dodaj recenziju</button></div>
+                </mat-card-actions>
               </mat-card-content>
-              <mat-card-actions style="margin-top:10px">
-                <div style="display: flex ; justify-content: center"><button mat-raised-button style="width: 90%;margin-bottom: 5px;" color="accent">KUPI</button></div>
-              </mat-card-actions>
             </mat-card></mat-grid-tile>
 
           </mat-grid-list>
-          <mat-paginator style="position: relative" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+          <mat-paginator style="position: relative" [pageSizeOptions]="[4, 10, 25, 100]"></mat-paginator>
         </div>
 
 

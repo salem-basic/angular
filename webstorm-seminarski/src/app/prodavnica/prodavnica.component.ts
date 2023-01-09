@@ -62,19 +62,19 @@ export class ProdavnicaComponent implements OnInit {
     })
   }
 
-  ObrisiProizvod(x: Proizvod) {
+  ObrisiProizvod(x: Prodavnica) {
     this.service.Delete(x.id).subscribe(() => {
       alert("Uspjesno brisanje");
       this.UcitajPodatke();
     })
   }
 
-  Uredi(x: Proizvod) {
+  Uredi(x: Prodavnica) {
     let dialogRef = this.dialog.open(PrmodalComponent, {data:x,  width:'30%',height:'70%'})
 
     dialogRef.afterClosed().subscribe(x => {
       this.service.Update(x.id , x).subscribe( () =>{
-        alert("Uspjesno editovanje proizvoda");
+        alert("Uspjesno editovanje prodavnice");
         this.UcitajPodatke();
       })
     })
@@ -90,7 +90,7 @@ export class ProdavnicaComponent implements OnInit {
 
   Dodaj(x: Prodavnica) {
     this.service.Add(x).subscribe(() => {
-      alert("Uspjesno dodavanje proizvoda");
+      alert("Uspjesno dodavanje prodavnice");
       this.UcitajPodatke();
       this.dodajProdavnicu = <Prodavnica>{};
     })
