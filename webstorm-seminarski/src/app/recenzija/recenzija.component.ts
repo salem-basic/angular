@@ -3,6 +3,7 @@ import {HttpClient, HttpParams} from "@angular/common/http";
 import {ActivatedRoute} from "@angular/router";
 import {JwtHelperService} from "@auth0/angular-jwt";
 import {KorisnikService} from "../servisi/korisnik.service";
+import {RecenzijaService} from "../servisi/recenzija.service";
 
 @Component({
   selector: 'app-recenzija',
@@ -17,14 +18,15 @@ export class RecenzijaComponent implements OnInit {
   novaRecenzija:any = null;
   korisnici:any;
 
-  constructor(private httpKlijent : HttpClient, private ruter : ActivatedRoute, private jwtHelper : JwtHelperService) { }
+  constructor(private httpKlijent : HttpClient,public recenzijaServis : RecenzijaService, private ruter : ActivatedRoute, private jwtHelper : JwtHelperService) { }
 
   ngOnInit(): void {
       this.sub = this.ruter.params.subscribe((res:any) =>{
         this.id = +res['id'];
         this.loadRecenzije();
       });
-      this.loadKorisnik();
+      //this.loadKorisnik();
+    this.ucitajKorisnike();
   }
 
   loadRecenzije(){
@@ -33,18 +35,25 @@ export class RecenzijaComponent implements OnInit {
     })
   }
 
-  loadKorisnik(){
-    this.httpKlijent.get("https://localhost:7025/Recenzija/GetKorisnike/").subscribe((x:any)=>{
+  ucitajKorisnike(){
+    this.recenzijaServis.GetKorisnik().subscribe((x:any)=>{
       this.korisnici = x;
     })
   }
+
+  //loadKorisnik(){
+    //this.httpKlijent.get("https://localhost:7025/Recenzija/GetKorisnike/").subscribe((x:any)=>{
+      //this.korisnici = x;
+    //})
+  //}
 
   dodajRecenziju(){
     this.novaRecenzija = {
       id:this.id,
       opis:"",
       ocjena:"",
-      korisnik:""
+      korisnikid:this.GetUserId(),
+      korisnikime:this.GetUserName(),
     };
   }
 
@@ -59,5 +68,12 @@ export class RecenzijaComponent implements OnInit {
     const decodedToken = this.jwtHelper.decodeToken(token);
     const name = decodedToken['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname']
     return name;
+  }
+
+  public GetUserId = (): string => {
+    const token = localStorage.getItem("token");
+    const decodedToken = this.jwtHelper.decodeToken(token);
+    const id = decodedToken['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier']
+    return id;
   }
 }

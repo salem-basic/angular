@@ -48,6 +48,12 @@ import { RouterZaposlenikComponent } from './router-zaposlenik/router-zaposlenik
 import { ChartAdminComponent } from './chart-admin/chart-admin.component';
 import { ZaposlenikChartComponent } from './zaposlenik-chart/zaposlenik-chart.component';
 import { RecenzijaComponent } from './recenzija/recenzija.component';
+import { EvidencijaZaposlenikaComponent } from './evidencija-zaposlenika/evidencija-zaposlenika.component';
+import { EzmodalComponent } from './evidencijaZaposlenika/ezmodal/ezmodal.component';
+import {MatCheckboxModule} from "@angular/material/checkbox";
+import { EvidencijamodalComponent } from './evidencija-zaposlenika/evidencijamodal/evidencijamodal.component';
+import { ChartNarudzbaComponent } from './chart-narudzba/chart-narudzba.component';
+import { DodajSlikuComponent } from './lokacija/dodaj-sliku/dodaj-sliku.component';
 
 
 export function tokenGetter() {
@@ -83,6 +89,11 @@ export function tokenGetter() {
     ChartAdminComponent,
     ZaposlenikChartComponent,
     RecenzijaComponent,
+    EvidencijaZaposlenikaComponent,
+    EzmodalComponent,
+    EvidencijamodalComponent,
+    ChartNarudzbaComponent,
+    DodajSlikuComponent,
 
   ],
     imports: [
@@ -92,29 +103,30 @@ export function tokenGetter() {
             {path: 'login', component: LoginComponent},
             {path: 'pocetna', component: PocetnaComponent},
             {path: 'proizvodi-pregled', component: ProizvodiPregledComponent},
-            {path: 'admin', component: AdminComponent, canActivate:[AdminGuard]},
-            {path: 'proizvodi', component: ProizvodiComponent, canActivate:[ZaposlenikGuard]},
+            {path: 'admin', component: AdminComponent},
+            {path: 'proizvodi', component: ProizvodiComponent},
             {path: '', component: PocetnaComponent},
-            {path: 'zaposlenici', component: ZaposleniciComponent, canActivate:[AdminGuard]},
+            {path: 'zaposlenici', component: ZaposleniciComponent, canActivate: [AdminGuard]},
             {path: 'lokacija', component: LokacijaComponent},
-            {path: 'prodavnica', component: ProdavnicaComponent, canActivate:[AdminGuard]},
+            {path: 'prodavnica', component: ProdavnicaComponent, canActivate: [AdminGuard]},
             {path: 'prodavnica-pregled', component: ProdavnicaPregledComponent},
-            {path: 'dostavljac', component: DostavljacComponent, canActivate:[ZaposlenikGuard]},
+            {path: 'dostavljac', component: DostavljacComponent, canActivate: [ZaposlenikGuard]},
             {path: 'detalji', component: ProductDetailsComponent},
             {path: 'korpa', component: CartComponent},
             {path: 'forbidden', component: ForbiddenComponent},
-            {path: 'zaposlenik-panel', component: ZaposlenikPanelComponent, canActivate:[ZaposlenikGuard]},
+            {path: 'zaposlenik-panel', component: ZaposlenikPanelComponent},
             {path: 'chartAdmin', component: ChartAdminComponent},
             {path: 'chartZaposlenik', component: ZaposlenikChartComponent},
-            {path: 'proizvod-recenzija/:id', component: RecenzijaComponent, canActivate:[AuthGuard]}
+            {path: 'proizvod-recenzija/:id', component: RecenzijaComponent, canActivate: [AuthGuard]},
+            {path: 'evidencijaZaposlenika', component: EvidencijaZaposlenikaComponent},
         ]),
-      JwtModule.forRoot({
-        config: {
-          tokenGetter: tokenGetter,
-          allowedDomains: ["localhost:5001"],
-          disallowedRoutes: []
-        }
-      }),
+        JwtModule.forRoot({
+            config: {
+                tokenGetter: tokenGetter,
+                allowedDomains: ["localhost:5001"],
+                disallowedRoutes: []
+            }
+        }),
         FormsModule,
         ReactiveFormsModule,
         HttpClientModule,
@@ -130,7 +142,8 @@ export function tokenGetter() {
         MatCardModule,
         MatPaginatorModule,
         MatNativeDateModule,
-        NgChartsModule
+        NgChartsModule,
+        MatCheckboxModule
     ],
   providers: [
     {

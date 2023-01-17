@@ -17,7 +17,6 @@
   <table class="table table-bordered">
     <thead>
     <tr>
-      <th>ID</th>
       <th>Opis</th>
       <th>Ocjena</th>
       <th>Ocijenio korisnik</th>
@@ -26,7 +25,6 @@
 
     <tbody>
     <tr *ngFor="let r of recenzija.recenzije">
-      <td>{{r.id}}</td>
       <td>{{r.opis}}</td>
       <td>{{r.ocjena}}</td>
       <td>{{r.korisnik.ime}}</td>
@@ -63,12 +61,12 @@
           <input class="form-control" placeholder="Ocjena" [(ngModel)]="novaRecenzija.ocjena"/>
         </div>
         <div class="mb-3">
-          <label class="form-label">Korisnik</label>
-          <select class="form-control" placeholder="Korisnik" [(ngModel)]="novaRecenzija.korisnik">
-            <option *ngFor="let x of korisnici" [value]="x.id">
-              {{x.ime}}
-            </option>
-          </select>
+          <label class="form-label">Korisnik ime</label>
+          <input class="form-control" placeholder="Korisnik ime"  [(ngModel)]="novaRecenzija.korisnikime"/>
+        </div>
+        <div style="display: none" class="mb-3">
+          <label class="form-label" >Korisnik id</label>
+          <input class="form-control" placeholder="Korisnik id" [(ngModel)]="novaRecenzija.korisnikid"/>
         </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" (click)="novaRecenzija=null">Close</button>
