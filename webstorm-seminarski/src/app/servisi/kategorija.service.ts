@@ -4,7 +4,9 @@ import {HttpClient} from "@angular/common/http";
 
 export interface Kategorija{
   id:number,
-  nazivKategorije:string
+  nazivKategorije:string,
+  materijal:string,
+  kvalitet:string
 }
 
 @Injectable({

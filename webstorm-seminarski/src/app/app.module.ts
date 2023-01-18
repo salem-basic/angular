@@ -54,6 +54,13 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
 import { EvidencijamodalComponent } from './evidencija-zaposlenika/evidencijamodal/evidencijamodal.component';
 import { ChartNarudzbaComponent } from './chart-narudzba/chart-narudzba.component';
 import { DodajSlikuComponent } from './lokacija/dodaj-sliku/dodaj-sliku.component';
+import { DobavljacComponent } from './dobavljac/dobavljac.component';
+import { KategorijaComponent } from './kategorija/kategorija.component';
+import { KmodalComponent } from './kategorija/kmodal/kmodal.component';
+import { DodajmodalComponent } from './dobavljac/dodajmodal/dodajmodal.component';
+import { BmodalComponent } from './brend/bmodal/bmodal.component';
+import { BrendComponent } from './brend/brend.component';
+import { NavigacijaEvidencijaComponent } from './navigacija-evidencija/navigacija-evidencija.component';
 
 
 export function tokenGetter() {
@@ -94,6 +101,13 @@ export function tokenGetter() {
     EvidencijamodalComponent,
     ChartNarudzbaComponent,
     DodajSlikuComponent,
+    DobavljacComponent,
+    KategorijaComponent,
+    KmodalComponent,
+    DodajmodalComponent,
+    BmodalComponent,
+    BrendComponent,
+    NavigacijaEvidencijaComponent,
 
   ],
     imports: [
@@ -119,6 +133,9 @@ export function tokenGetter() {
             {path: 'chartZaposlenik', component: ZaposlenikChartComponent},
             {path: 'proizvod-recenzija/:id', component: RecenzijaComponent, canActivate: [AuthGuard]},
             {path: 'evidencijaZaposlenika', component: EvidencijaZaposlenikaComponent},
+            {path: 'dobavljac', component: DobavljacComponent},
+            {path: 'kategorija', component: KategorijaComponent},
+            {path: 'brend', component: BrendComponent},
         ]),
         JwtModule.forRoot({
             config: {

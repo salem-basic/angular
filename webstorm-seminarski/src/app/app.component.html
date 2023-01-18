@@ -3,12 +3,12 @@
   <nav class="navigacija">
     <ul>
       <li routerLink="/pocetna" routerLinkActive="active">POCETNA</li>
-      <li *ngIf="!servis.isLoginActive()" (click)="onCreate()" routerLinkActive="active">LOGIN</li>
-      <li *ngIf="servis.isLoginActive()" (click)="servis.logout()" routerLink="/login" routerLinkActive="active">LOGOUT</li>
       <li routerLink="/proizvodi-pregled" routerLinkActive="active">PROIZVODI</li>
       <li routerLink="/prodavnica-pregled" routerLinkActive="active">PRODAVNICE</li>
       <li  routerLink="/admin" routerLinkActive="active">ADMIN</li>
       <li routerLink="/zaposlenik-panel" routerLinkActive="active">ZAPOSLENIK</li>
+      <li *ngIf="!servis.isLoginActive()" (click)="onCreate()" routerLinkActive="active">LOGIN</li>
+      <li *ngIf="servis.isLoginActive()" (click)="servis.logout()" routerLink="/login" routerLinkActive="active">LOGOUT</li>
     </ul>
   </nav>
   <div class="crna_traka">

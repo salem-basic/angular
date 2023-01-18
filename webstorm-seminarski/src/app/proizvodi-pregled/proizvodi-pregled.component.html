@@ -58,7 +58,7 @@
         <div class="ponuda">
           <mat-grid-list cols="4"rowHeight="400px">
             <mat-grid-tile class = "prozor" *ngFor="let x of obs | async"><mat-card class="example-card">
-              <img mat-card-image src="{{x.slika}}" alt="Photo of a Shiba Inu" style="height: 150px">
+              <img mat-card-image src="{{x.slika}}" alt="Photo of a Shiba Inu" style="height: 180px;width: 250px">
               <mat-card-content>
                 <p style="font-size: 14px;font-weight: bold">{{x.nazivProizvoda}}</p>
 
@@ -67,7 +67,7 @@
                 </p>
 
                 <mat-card-actions style="margin-top:10px">
-                  <div style="display: flex ; justify-content: center"><button mat-raised-button style="width: 90%;margin-bottom: 5px;" color="accent" (click)="otvori_recenziju(x)">Dodaj recenziju</button></div>
+                  <div style="display: flex ; justify-content: center"><button id="recenzijaButton" mat-raised-button style="width: 90%;margin-bottom: 5px;" color="accent" (click)="otvori_recenziju(x)">Dodaj recenziju</button></div>
                 </mat-card-actions>
               </mat-card-content>
             </mat-card></mat-grid-tile>

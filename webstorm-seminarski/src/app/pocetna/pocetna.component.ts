@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Route, Router} from "@angular/router";
 import {JwtHelperService} from "@auth0/angular-jwt";
+import {LoginComponent} from "../login/login.component";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-pocetna',
@@ -9,7 +11,7 @@ import {JwtHelperService} from "@auth0/angular-jwt";
 })
 export class PocetnaComponent implements OnInit {
 
-  constructor(private router : Router, private jwtHelper: JwtHelperService) { }
+  constructor(private router : Router, private jwtHelper: JwtHelperService, private dialog:MatDialog) { }
 
   ngOnInit(): void {
   }
@@ -28,5 +30,9 @@ export class PocetnaComponent implements OnInit {
 
   gost() {
     this.router.navigateByUrl('/proizvodi-pregled')
+  }
+
+  onCreate(){
+    this.dialog.open(LoginComponent);
   }
 }
